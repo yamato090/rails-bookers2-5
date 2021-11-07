@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookers</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+   </head>
+<body>
+    <header>
+       <div class="container">
+            <nav class="navbar navbar-expand-md navbar-dark">
+                <div class="nav navbar-left">
+                  <h3><p class="text-white"><%= link_to "Bookers", root_path %></p></h3>
+                </div>
+                <ul class="nav navbar-nav navbar-right">
+                  <% if user_signed_in? %>
+                  <script src="https://kit.fontawesome.com/f186acbcdf.js" crossorigin="anonymous"></script>
+                  <div class="social">
+                     <li><i class="fas fa-home"></i><%= link_to "Home", user_path(current_user) %></li>
+                     <li><i class="fas fa-users"></i><%= link_to "Users", users_path %></li>
+                     <li><i class="fas fa-book-open"></i><%= link_to "Books", books_path %></li>
+                     <li><i class="fas fa-sign-out-alt"></i><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
+                  </div>
+                  <% else %>
+                  <script src="https://kit.fontawesome.com/f186acbcdf.js" crossorigin="anonymous"></script>
+                  <div class="social">
+                     <li><i class="fas fa-home"></i><%= link_to "Home", "/" %></li>
+                     <li><i class="fas fa-link"></i><%= link_to "About", home_about_path %></li>
+                     <li><i class="fas fa-user-plus"></i><%= link_to "Sign up", new_user_registration_path %></li>
+                     <li><i class="fas fa-sign-in-alt"></i><%= link_to "Log in", new_user_session_path %></li>
+                  </div>
+                  <% end %>
+                    <p class="notice"><%= notice %></p>
+                    <p class="alert"><%= alert %></p>
+                </ul>
+            </nav>
+        </div>
+     </header>
+    <%= yield %>
+   <footer>
+     <p> CopyRight Infratop.inc</p>
+   </footer>
+</body>
+</html>

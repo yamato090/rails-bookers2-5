@@ -1,0 +1,21 @@
+
+<div class="container">
+
+	<% if flash[:notice] %>
+	  <p><%= flash[:notice] %></p>
+	<% end %>
+  <script src="https://kit.fontawesome.com/f186acbcdf.js" crossorigin="anonymous"></script>
+  <div class="social">
+	  <h1>welcome to <i class="fas fa-book"></i>Bookers !!</h1>
+
+	  <p>In <i class="fas fa-book"></i><strong>Bookers</strong>,</p>
+	  <p>you can share and exchange your opinions , inpressions ,and eotions</p>
+	  <p>about various books!</p>
+    <div class="row text-center">
+      <%= link_to "Log in", new_user_session_path, class: "btn btn-info col-xs-6 col-xs-offset-3" %>
+    </div>
+    <div class="row">
+      <%= link_to "Sign up", new_user_registration_path, class: "btn btn-success col-xs-6 col-xs-offset-3" %>
+    </div>
+  </div>
+</div>

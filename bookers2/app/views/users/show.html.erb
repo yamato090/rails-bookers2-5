@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <%= render 'books/error', model: @user %>
+    <div class="col-md-3">
+      <%= render 'users/users', user: @user %>
+　  </div>
+    <div class="col-md-8 offset-md-1">
+      <h2>Books</h2>
+      <table>
+        <tr>
+          <th>Title</th>
+          <th>Opinion</th>
+        </tr>
+        <% @books.each do |book| %>
+        <%= link_to user_path(@user) do %>
+        <tr>
+          <td><%= attachment_image_tag(@book.user, :profile_image, size:"40x40", fallback: "no_image.jpg") %></td>
+          <% end %>
+          <th><%=link_to book.title, book_path(book.id)%></th>
+          <th><%= book.body %></th>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>

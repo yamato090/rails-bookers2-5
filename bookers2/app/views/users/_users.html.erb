@@ -1,0 +1,49 @@
+    <h2>User info</h2>
+      <%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %>
+      <table class="table table-user">
+        <tbody>
+          <tr>
+            <tr></tr>
+            <th>name</th>
+            <th><%= user.name %></th>
+          </tr>
+          <tr>
+            <th>introduction</th>
+            <th><%= user.introduction %></th>
+          </tr>
+          <tr>
+            <th>follows</th>
+            <td>
+              <%= link_to follows_user_path(user) do %>
+                <%= user.followings.count %>
+              <% end %>
+            </td>
+          </tr>          
+          <tr>
+            <th>followers</th>
+            <td>
+              <%= link_to followers_user_path(user) do %>
+                <%= user.followers.count %>
+              <% end %>
+            </td>
+          <tr><th><%= render 'relationships/follow_button', user: @user %></th></tr>
+          <tr>
+            <th><div class="social">
+              <%= link_to edit_user_path(user.id) do %>
+              <i class="fas fa-user-cog"></i>
+            </th>
+            <% end %>
+          </tr>
+        </tbody>
+    </table>
+    　<div>
+    　  <%= render 'users/error', model: @book %>
+        <%= form_with model: @book, local: true  do |f| %>
+          <h2>New book</h2>
+          <h4>Title</h4>
+          <%= f.text_field :title %>
+          <h4>Opinipn</h4>
+          <%= f.text_field :body %>
+          <nav><%= f.submit 'Create Book' %></nav>
+       <% end %>
+      </div>
