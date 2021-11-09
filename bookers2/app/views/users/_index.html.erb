@@ -1,0 +1,22 @@
+<% if @model == "user" %>
+  <% if users.present? %>
+    <table class="table table-sm user-index">
+      <thead>
+        <th>image</th>
+        <th>name</th>
+        <th></th>
+      </thead>
+      <tbody>
+        <% users.each do |user| %>
+        <tr>
+          <td><%= attachment_image_tag user, :profile_image, :fill, 50, 50,fallback: "no_image.jpg"%></td>
+          <td><%= user.name %></td>
+          <td><%= link_to "Show", "/users/#{user.id}" %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+      <tr><td>・該当のユーザーはいません</td></tr>
+    <% end %>
+  <% end %>
